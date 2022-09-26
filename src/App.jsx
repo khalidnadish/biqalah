@@ -18,6 +18,23 @@ function App() {
     palette: {
       mode: modex,
     },
+    typography: {
+      Kufi: {
+        fontFamily: "Noto Kufi Arabic, sans-serif",
+      },
+      Naskh: {
+        fontFamily: "Noto Naskh Arabic', serif",
+      },
+     
+    },
+
+
+
+
+
+
+ 
+
   });
 
   return (

@@ -16,6 +16,7 @@ function Body() {
       {reqlink==="PaySupplier" &&  <PayInvoice/>}
       {reqlink==="StatmentSupplier" &&  <StatmentSupplier/>}
       {reqlink==="AllStatmentSupplier" &&  <AllSupplerBalance/>}
+      
       {reqlink==="Home" &&  <Home/>}
        
     </div>
