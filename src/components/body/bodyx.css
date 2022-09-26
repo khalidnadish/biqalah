@@ -1,0 +1,14 @@
+.body_contaner{
+    height: 84% ;
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    border-top: 2px solid green;
+    border-bottom: 2px solid green;
+    margin-top: .2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(218, 154, 36,.1);
+   
+   }

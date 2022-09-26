@@ -1,0 +1,86 @@
+.header_contaner {
+    height: 7%;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* font-family: 'Noto Kufi Arabic', sans-serif; */
+
+}
+
+.iconStyle {
+    margin-left: 5px;
+    margin-right: 5px;
+    /* border: 1px solid; */
+}
+
+.iconDiv {
+    cursor: pointer;
+    display: flex;
+    border-radius: 5px;
+    margin: 0 20px 0 20px;
+}
+
+.setting {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.setting p {
+    width: 100%;
+    text-transform: capitalize;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 600;
+
+    font-family: 'Noto Naskh Arabic', serif;
+      /* font-family: 'Noto Kufi Arabic', sans-serif; */
+}
+
+.setting p:hover {
+    border-bottom: 1px solid #000;
+    font-size: small;
+    background-color: #ccc;
+}
+
+.items {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+}
+
+.Profilesetting {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 30px;
+    justify-content: start;
+}
+
+.Profilesetting p {
+    width: 100%;
+    text-transform: capitalize;
+    border-bottom: 1px solid #ccc;
+    font-size: small;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 600;
+    font-family: 'Noto Naskh Arabic', serif;
+}
+
+.Profilesetting p:hover {
+    border-bottom: 1px solid #000;
+    font-size: small;
+    background-color: #ccc;
+}
