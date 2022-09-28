@@ -1,10 +1,11 @@
 import React, {useContext} from "react";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
-import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
-import BalanceOutlinedIcon from "@mui/icons-material/BalanceOutlined";
-import MailLockOutlinedIcon from "@mui/icons-material/MailLockOutlined";
+
 import { MainContext } from "../../helper/context";
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import SpatialAudioOffIcon from '@mui/icons-material/SpatialAudioOff';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 function SupplierMenu({ toggle }) {
   const { setReqlink } = useContext(MainContext);
 
@@ -39,8 +40,8 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <AttachMoneyOutlinedIcon />
-          <p>دفع فاتورة</p>
+          <BorderColorIcon />
+          <p>امر شراء  </p>
         </div>
         <div
           onClick={() => {
@@ -49,8 +50,8 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <BalanceOutlinedIcon />
-          <p>كشف رصيد مورد</p>
+          <SpatialAudioOffIcon />
+          <p>ارسال ملاحظة </p>
         </div>
         <div
           onClick={() => {
@@ -59,8 +60,8 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <MailLockOutlinedIcon />
-          <p>ارصدة الموردين</p>
+          <RemoveShoppingCartIcon />
+          <p>توالف</p>
         </div>
       </div>
     </>

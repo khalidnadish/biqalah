@@ -19,7 +19,7 @@ const DrawerHEADER = ({ toggle, title }) => (
       justifyContent="space-between"
       alignItems="center"
       p={2}
-      width="250px"
+      width="180px"
       textAlign="center"
       role="presentation"
     >

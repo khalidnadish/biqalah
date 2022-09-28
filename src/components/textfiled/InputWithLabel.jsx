@@ -1,48 +1,32 @@
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 
-function InputWithLabel({ label }) {
+function InputWithLabel({ label, fieldType, iconX, widthx }) {
   return (
     <>
       <Box
         sx={{
           display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
         }}
       >
-        <Grid container spacing={1} alignItems="center">
-          <Grid item xs={4} align="right">
-            <Typography
-              sx={{
-                fontFamily: "Noto Kufi Arabic, sans-serif",
-                fontWeight: "400",
-                alignItems: "right",
-                fontSize: "14px",
-              }}
-            >
-              {label}
-            </Typography>
-          </Grid>
-          <Grid item xs={8} align="left">
-            <TextField
-              fullWidth
-              size="small"
-              inputProps={{
-                style: {
-                  fontSize: ".8rem",
-                  fontFamily: "Noto Kufi Arabic, sans-serif",
-                },
-              }} 
-              sx={{
-                fontFamily: "Noto Kufi Arabic, sans-serif",
-                fontWeight: "800",
-                
-              }}
-            />
-          </Grid>
-        </Grid>
+        <Box mx={1}>{iconX}</Box>
+        <TextField
+          type={fieldType}
+          fullWidth
+          size="small"
+          placeholder={label}
+          inputProps={{
+            style: {
+              fontSize: "1rem",
+              fontFamily: "Noto Kufi Arabic, sans-serif",
+            },
+          }}
+          sx={{
+            fontFamily: "Noto Kufi Arabic, sans-serif",
+            fontWeight: "800",
+            width: widthx,
+          }}
+        />
       </Box>
     </>
   );

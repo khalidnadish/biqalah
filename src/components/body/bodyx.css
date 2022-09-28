@@ -1,5 +1,5 @@
 .body_contaner{
-    height: 84% ;
+    height: 80% ;
     position: absolute;
     top: 45px;
     width: 100%;
@@ -10,5 +10,5 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(218, 154, 36,.1);
-   
    }
+
