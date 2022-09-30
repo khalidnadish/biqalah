@@ -1,11 +1,12 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
 
 import { MainContext } from "../../helper/context";
-import BorderColorIcon from '@mui/icons-material/BorderColor';
-import SpatialAudioOffIcon from '@mui/icons-material/SpatialAudioOff';
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import SpatialAudioOffIcon from "@mui/icons-material/SpatialAudioOff";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 function SupplierMenu({ toggle }) {
   const { setReqlink } = useContext(MainContext);
 
@@ -15,7 +16,7 @@ function SupplierMenu({ toggle }) {
         <div
           onClick={() => {
             toggle(false);
-            setReqlink("AddSupplier")
+            setReqlink("AddSupplier");
           }}
           className="items"
         >
@@ -26,7 +27,7 @@ function SupplierMenu({ toggle }) {
         <div
           onClick={() => {
             toggle(false);
-            setReqlink("AddItem")
+            setReqlink("AddItem");
           }}
           className="items"
         >
@@ -36,17 +37,29 @@ function SupplierMenu({ toggle }) {
         <div
           onClick={() => {
             toggle(false);
-            setReqlink("PaySupplier")
+            setReqlink("PaySupplier");
           }}
           className="items"
         >
           <BorderColorIcon />
-          <p>امر شراء  </p>
+          <p>امر شراء </p>
         </div>
+
         <div
           onClick={() => {
             toggle(false);
-            setReqlink("StatmentSupplier")
+            setReqlink("StatmentSupplier");
+          }}
+          className="items"
+        >
+          <ReceiptLongIcon />
+          <p>ملخص الفواتير </p>
+        </div>
+
+        <div
+          onClick={() => {
+            toggle(false);
+            setReqlink("StatmentSupplier");
           }}
           className="items"
         >
@@ -56,7 +69,7 @@ function SupplierMenu({ toggle }) {
         <div
           onClick={() => {
             toggle(false);
-            setReqlink("AllStatmentSupplier")
+            setReqlink("AllStatmentSupplier");
           }}
           className="items"
         >

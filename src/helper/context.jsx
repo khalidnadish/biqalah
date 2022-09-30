@@ -4,8 +4,7 @@ MainContext.displayName = "NewsContext>>>";
 
 export const ContextProvider = (props) => {
   const [reqlink, setReqlink] = useState("Home");
-  const [modex, setModex] = useState("light");
-   
+  const [modex, setModex] = useState("dark");
 
   return (
     <MainContext.Provider

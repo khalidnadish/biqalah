@@ -1,14 +1,27 @@
-.body_contaner{
-    height: 80% ;
-    position: absolute;
-    top: 45px;
-    width: 100%;
-    border-top: 2px solid green;
-    border-bottom: 2px solid green;
-    margin-top: .2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(218, 154, 36,.1);
-   }
+.body_contaner {
+  height: 80%;
+  position: absolute;
+  top: 45px;
+  width: 100%;
+  border-top: 2px solid green;
+  border-bottom: 2px solid green;
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(218, 154, 36, 0.1);
+  /* overflow: auto; */
+}
+.supplerSection {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
 
+@media only screen and (max-width: 600px) {
+  .supplerSection {
+    flex-direction: column;
+  }
+}

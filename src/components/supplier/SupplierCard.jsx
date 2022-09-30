@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Grid, Paper, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import PublishIcon from "@mui/icons-material/Publish";
 import PaidIcon from "@mui/icons-material/Paid";
@@ -7,6 +7,11 @@ import RecentActorsIcon from "@mui/icons-material/RecentActors";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import supplierData from "../../helper/data/suppliedrData.json";
+import DiloagShow from "../dawer/DiloagShow";
+import useToggle from "../../helper/toggleHooke";
+import DispOneSupplier from "./DispOneSupplier";
+import DisplayInvoice from "./DisplayInvoice";
 
 function SupplierCard({
   supplier = "khalid nadish",
@@ -16,11 +21,13 @@ function SupplierCard({
   salesphone = "###-######",
 }) {
   const resultData = sumX(inMony, outMony);
+
   return (
     <>
       <Paper
-        elevation={3}
+        elevation={1}
         sx={{
+          minWidth: { xs: "280px", md: "Auto" },
           width: { xs: "100%", md: "Auto" },
           // bgcolor: "primary.light",
           borderRadius: 4,
@@ -47,7 +54,7 @@ function SupplierCard({
             outMony={outMony}
             resultData={resultData}
           />
-          <CardActionX />
+          <CardActionX supplierName={supplier} />
         </Box>
       </Paper>
     </>
@@ -135,13 +142,14 @@ function SupplierData({ supplier, lastinvoice, salesphone }) {
 const ShowResult = ({ inMony, outMony, resultData }) => (
   <>
     <Paper
-      elevation={2}
+      elevation={3}
       sx={{
         width: "100%",
         p: 1,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        overflow: "auto",
       }}
     >
       <Box
@@ -149,16 +157,16 @@ const ShowResult = ({ inMony, outMony, resultData }) => (
           width: "100%",
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "space-evenly",
         }}
       >
         <Box
           sx={{
             display: "flex",
             alignItems: "center",
-
-            justifyContent: "space-between",
+            justifyContent: "flex-start",
           }}
+          px={1}
         >
           <FileDownloadIcon color="success" fontSize="1rem" />
           <Typography color="success.dark" variant="body2">
@@ -169,12 +177,12 @@ const ShowResult = ({ inMony, outMony, resultData }) => (
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "flex-start",
           }}
-          mx={1}
+          px={1}
         >
           <PublishIcon color="error" fontSize="2rem" />
-          <Typography color="error.dark" variant="body1">
+          <Typography color="error.dark" variant="body2">
             {outMony}
           </Typography>
         </Box>
@@ -184,16 +192,16 @@ const ShowResult = ({ inMony, outMony, resultData }) => (
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "flex-start",
           }}
-          mx={1}
+          px={1}
         >
           <PaidIcon color={resultData.iconcolor} fontSize="2rem" />
 
           <Typography
             fontWeight={"bold"}
             color={resultData.textcolor}
-            variant="body1"
+            variant="body2"
           >
             {resultData.result}
           </Typography>
@@ -227,7 +235,10 @@ const sumX = (x1, x2) => {
   return resultSum;
 };
 
-const CardActionX = () => {
+const CardActionX = ({ supplierName }) => {
+  const [open, toggle] = useToggle(false);
+  const [openInvoice, setToggleInvoice] = useToggle(false);
+  console.log(openInvoice);
   return (
     <>
       <Box
@@ -241,6 +252,7 @@ const CardActionX = () => {
           variant="contained"
           sx={{ minWidth: 0, width: "fit-content" }}
           color="warning"
+          onClick={() => toggle(true)}
         >
           <RecentActorsIcon color="background.paper" />
         </Button>
@@ -248,10 +260,30 @@ const CardActionX = () => {
           variant="contained"
           color="error"
           sx={{ minWidth: 0, width: "fit-content" }}
+          onClick={() => {
+            setToggleInvoice(true);
+            console.log("openInvoice", openInvoice);
+          }}
         >
           <ReceiptLongIcon color="background.paper" variant="contained" />
         </Button>
       </Box>
+
+      {open && (
+        <DiloagShow open={open} toggle={toggle} title={supplierName}>
+          <DispOneSupplier supData={supplierData[0]} />
+        </DiloagShow>
+      )}
+
+      {openInvoice && (
+        <DiloagShow
+          open={openInvoice}
+          toggle={setToggleInvoice}
+          title={"ملخص الفواتير"}
+        >
+          <DisplayInvoice />
+        </DiloagShow>
+      )}
     </>
   );
 };

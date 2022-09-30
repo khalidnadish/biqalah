@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./header.css";
-
 
 import PersonIcon from "@mui/icons-material/Person";
 import DrawerMui from "../dawer/DrawerMui";
@@ -8,13 +7,12 @@ import EntryDrawer from "../dawer/EntryDrawer";
 import useToggle from "../../helper/toggleHooke";
 import SupplierMenu from "./SupplierMenu";
 import Person from "./Person";
-import { Paper, useTheme } from "@mui/material";
+import { Paper, Typography, useTheme } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Box } from "@mui/material";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import AddSupplier from "../supplier/AddSupplier";
-import ListSupplier from  "../supplier/ListSupplier";
-import { Wifi2Bar } from "@mui/icons-material";
+
 function Header() {
   const [open, toggle] = useToggle(false);
   const [open1, setOpen1] = useState(false);
@@ -23,6 +21,13 @@ function Header() {
   const [anchor, setAnchor] = useState("");
   const [title, setTitle] = useState("");
   const Theme = useTheme();
+  const [screenW, setScreenW] = useState(0);
+  const [screenH, setScreenH] = useState(0);
+
+  useEffect(() => {
+    setScreenW(screen.availWidth);
+    setScreenH(screen.availHeight);
+  }, []);
 
   return (
     <>
@@ -60,15 +65,17 @@ function Header() {
         >
           <PersonIcon color="common" className="iconStyle" />
         </Box>
-
-        <Box
+        {/* <Box
           className="iconDiv"
           onClick={() => {
             setOpen1(true);
           }}
         >
           <QueryStatsIcon color="common" className="iconStyle" />
-        </Box>
+        </Box> */}
+        {/* <Typography variant="caption" color={"background.paper"}>
+          W:{screenW} -- H:{screenH}
+        </Typography> */}
       </Paper>
 
       {open && (
@@ -95,5 +102,4 @@ function Header() {
   );
 }
 
- 
 export default Header;

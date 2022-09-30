@@ -9,7 +9,13 @@ import {
 } from "@mui/material";
 import React from "react";
 
-function DiloagShow({ open, toggle, children, title }) {
+function DiloagShow({
+  open,
+  toggle,
+  children,
+  title,
+  titleColor = "primary.dark",
+}) {
   return (
     <>
       <Dialog open={open} onClose={toggle}>
@@ -19,23 +25,31 @@ function DiloagShow({ open, toggle, children, title }) {
             justifyContent: "space-between",
             m: 0,
             px: 2,
-            bgcolor: "primary.dark",
+            bgcolor: titleColor,
           }}
         >
           <Typography
-            variant="h5"
+            variant="body1"
             sx={{
               fontFamily: "Noto Kufi Arabic, sans-serif",
-              fontWeight: "800",
+              fontWeight: "400",
               color: "background.paper",
             }}
+            px={2}
           >
             {title}
           </Typography>
 
           <Button
             onClick={() => toggle(false)}
-            sx={{ minWidth: 0, py: 0.3, m: 0, borderRadius: "50px" }}
+            sx={{
+              minWidth: 0,
+              py: 0.3,
+              m: 0,
+              width: "30px",
+              height: "25px",
+              borderRadius: "8px",
+            }}
             variant="contained"
             color="error"
           >

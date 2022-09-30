@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "supplierName": "Synergistic local contingency",
+    "salesName": "support",
+    "saleEmail": "rlarive0@technorati.com",
+    "salePhone": "0512345678",
+    "openBalance": 46778.31,
+    "currentBalance": 46778.31,
+
+    "inv_count": 150,
+    "pay_count": 120,
+
+    "total_invoices": 0,
+    "total_payed": 0,
+
+    "first_inv_date": "2015-01-01",
+    "first_inv_amt": "10000",
+    "last_inv_date": "2015-01-01",
+    "last_inv_amt": "30001",
+
+    "first_pay_date": "2015-01-01",
+    "first_pay_amt": "855",
+    "last_pay_date": "2015-01-01",
+    "last_pay_amt": "5151",
+
+    "best_item": "zabadi",
+    "damage_total": "100",
+    "item_counters": "150"
+  }
+]

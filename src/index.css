@@ -1,6 +1,6 @@
 :root {
   /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
-  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-family: "Noto Kufi Arabic", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -9,7 +9,6 @@
   justify-content: center;
   align-items: center;
   color-scheme: light dark;
-
 
   box-sizing: border-box;
   font-synthesis: none;
@@ -21,7 +20,6 @@
 
 ::-webkit-scrollbar {
   width: 10px;
- 
 }
 ::-webkit-scrollbar-track {
   background-color: #f6f6f6;
@@ -41,8 +39,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -51,6 +47,13 @@ html {
   -moz-transition: all 0.5s 0s ease;
   -o-transition: all 0.5s 0s ease;
   transition: all 0.5s 0s ease;
+}
+
+input {
+  font-family: "Noto Kufi Arabic", sans-serif;
+  padding: 0;
+  margin: 0;
+  /* font-size: 0.8em; */
 }
 
 a {
@@ -63,12 +66,10 @@ a:hover {
   color: #535bf2;
 }
 
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
-
 }
 
 h1 {
@@ -116,11 +117,9 @@ button:focus-visible {
   text-align: center;
 }
 
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-
   }
 
   a:hover {

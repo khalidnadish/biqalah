@@ -1,37 +1,117 @@
+.showContiner {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
 
-.showContiner{
-    /* height: 95%; */
-    /* width: 95%; */
-    height: 70%;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
-    padding: 10px;
-    overflow-y: auto;
-    height: 40%;
+  border-radius: 5px;
+  padding: 5px;
+
+  overflow-y: auto;
+  height: 100%;
 }
-.addSup{
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding:10px;
-    margin-top: 10px;
-    height: fit-content;
+.addSup {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  overflow-y: auto;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  /* width: 100%; */
+  gap: 30px;
+  overflow: auto;
 }
-.showandAdd{
-    /* border: 12px solid red; */
-    display: flex;
-    flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    gap: 15px;
-    height: 100%;
+.showandAdd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+}
+
+.supplier_card_tilte {
+  font-family: "Noto Kufi Arabic", sans-serif;
+  font-size: 1em;
+  background-color: #c2e7ff;
+  border-radius: 4px;
+  padding: 0px 5px 0px 5px;
+  margin: 0px 5px 0px 5px;
+}
+
+.invoiceContainer {
+  position: relative;
+}
+
+.tablecontainer {
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+
+.tablecontainer thead tr {
+  background-color: #009879;
+  color: #fff;
+  text-align: right;
+  font-weight: bold;
+}
+.tablecontainer th,
+.tablecontainer td {
+  padding: 12px 15px;
+}
+.tablecontainer tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.tablecontainer tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.tablecontainer tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+.tablecontainer tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+.invTotal {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+  font-family: "Noto Kufi Arabic", sans-serif;
+  text-align: center;
+  font-weight: bold;
+  background-color: #009879;
+  color: #fff;
+  padding: 12px 15px;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 600px) {
+  .supplier_card_tilte {
+    font-size: 0.8em;
+  }
+  .tablecontainer {
+    font-size: 0.7em;
+    min-width: 100px;
+
+    white-space: nowrap;
+    /* width: 100%; */
+    table-layout: auto;
+  }
+  .tablecontainer td {
+    max-width: 100%;
+    white-space: nowrap;
+  }
+  .tablecontainer th,
+  .tablecontainer td {
+    padding: 5px 7px;
+  }
 }
