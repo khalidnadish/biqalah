@@ -39,6 +39,9 @@ const paperContainer = {
 };
 
 function AddSupplier({ actionForm = "A" }) {
+  const theme = useTheme();
+  const isBigScreen = useMediaQuery(theme.breakpoints.up("sm"));
+
   const [sup_name, setSup_name] = useState("");
   const [openbalance, setOpenbalance] = useState("");
   const [saleName, setSaleName] = useState("");
@@ -79,6 +82,7 @@ function AddSupplier({ actionForm = "A" }) {
               setSaleName={setSaleName}
               setSaleMobile={setSaleMobile}
               setSaleEmail={setSaleMobile}
+              isBigScreen={isBigScreen}
             />
           </Box>
         </Paper>
@@ -95,6 +99,7 @@ const SupplierButton = ({
   setSaleName,
   setSaleMobile,
   setSaleEmail,
+  isBigScreen,
 }) => {
   const [open, toggle] = useToggle(false);
   const handleClear = () => {
@@ -139,7 +144,8 @@ const SupplierButton = ({
         )}
 
         {/* Show only if New */}
-        {actionForm === "A" && (
+
+        {!isBigScreen && actionForm === "A" && (
           <Button
             color="error"
             sx={{ fontFamily: "Noto Kufi Arabic, sans-serif" }}
