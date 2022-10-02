@@ -3,7 +3,7 @@ import React from "react";
 import MyBox from "../Box/MyBox";
 
 function DispOneSupplier({ supData }) {
-  console.log("data", supData);
+  // console.log("data", supData);s
   return (
     <>
       <Box

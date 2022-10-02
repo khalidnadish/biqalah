@@ -230,7 +230,7 @@ const sumX = (x1, x2) => {
     resultSum.textcolor = "primary.main";
   }
 
-  console.log(resultSum);
+  resultSum;
 
   return resultSum;
 };
@@ -238,7 +238,7 @@ const sumX = (x1, x2) => {
 const CardActionX = ({ supplierName }) => {
   const [open, toggle] = useToggle(false);
   const [openInvoice, setToggleInvoice] = useToggle(false);
-  console.log(openInvoice);
+  // console.log(openInvoice);
   return (
     <>
       <Box
@@ -262,7 +262,7 @@ const CardActionX = ({ supplierName }) => {
           sx={{ minWidth: 0, width: "fit-content" }}
           onClick={() => {
             setToggleInvoice(true);
-            console.log("openInvoice", openInvoice);
+            // console.log("openInvoice", openInvoice);
           }}
         >
           <ReceiptLongIcon color="background.paper" variant="contained" />

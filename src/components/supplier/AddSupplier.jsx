@@ -83,6 +83,7 @@ function AddSupplier({ actionForm = "A" }) {
               setSaleMobile={setSaleMobile}
               setSaleEmail={setSaleMobile}
               isBigScreen={isBigScreen}
+              SupplerData={SupplerData}
             />
           </Box>
         </Paper>
@@ -100,6 +101,7 @@ const SupplierButton = ({
   setSaleMobile,
   setSaleEmail,
   isBigScreen,
+  SupplerData,
 }) => {
   const [open, toggle] = useToggle(false);
   const handleClear = () => {
@@ -108,6 +110,9 @@ const SupplierButton = ({
     setSaleName("");
     setSaleMobile("");
     setSaleEmail("");
+  };
+  const handleSave = () => {
+    alert(JSON.stringify(SupplerData));
   };
 
   return (
@@ -127,6 +132,7 @@ const SupplierButton = ({
           color="success"
           sx={{ fontFamily: "Noto Kufi Arabic, sans-serif", width: "70%" }}
           variant="contained"
+          onClick={handleSave}
         >
           {actionForm === "A" && <SaveIcon fontSize="small" />}
           {actionForm === "U" && <EditIcon fontSize="small" />}
@@ -137,7 +143,6 @@ const SupplierButton = ({
             color="error"
             sx={{ fontFamily: "Noto Kufi Arabic, sans-serif" }}
             variant="contained"
-            onClick={handleClear}
           >
             <CleaningServicesIcon fontSize="small" />
           </Button>

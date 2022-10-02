@@ -22,3 +22,34 @@
   color: rgb(194, 45, 45);
   font-size: 0.8em;
 }
+
+.dropdown {
+  background-color: aqua;
+}
+.dropdownData {
+  background-color: red;
+}
+
+datalist option {
+  font-size: 0.8em;
+  padding: 0.3em 1em;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+/* option active styles */
+datalist option:hover,
+datalist option:focus {
+  color: #fff;
+  background-color: #036;
+  outline: 0 none;
+}
+
+.style-select {
+  width: 95%;
+  max-height: 200px;
+  margin-bottom: 15px;
+  color: #036;
+  font-family: "Noto Kufi Arabic", serif;
+  /* overflow-x: hidden; */
+}

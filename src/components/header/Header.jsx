@@ -43,7 +43,7 @@ function Header() {
           onClick={() => {
             toggle();
             setClickme("Supplier");
-            console.log(clickme);
+            // console.log(clickme);
             setAnchor("right");
             setTitle("الموردين");
           }}
@@ -58,7 +58,7 @@ function Header() {
           onClick={() => {
             toggle();
             setClickme("person");
-            console.log(clickme);
+            // console.log(clickme);
             setAnchor("left");
             setTitle("الملف الشخصي");
           }}
