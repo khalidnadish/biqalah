@@ -1,5 +1,9 @@
-import { Box, Button, Divider, Grid, Paper, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import PublishIcon from "@mui/icons-material/Publish";
 import PaidIcon from "@mui/icons-material/Paid";
@@ -10,8 +14,12 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import supplierData from "../../helper/data/suppliedrData.json";
 import DiloagShow from "../dawer/DiloagShow";
 import useToggle from "../../helper/toggleHooke";
-import DispOneSupplier from "./DispOneSupplier";
-import DisplayInvoice from "./DisplayInvoice";
+// import DispOneSupplier from "./DispOneSupplier";
+// import DisplayInvoice from "./DisplayInvoice";
+import Loader from "../loader/Loader";
+
+const DispOneSupplier = lazy(() => import("./DispOneSupplier"));
+const DisplayInvoice = lazy(() => import("./DisplayInvoice"));
 
 function SupplierCard({
   supplier = "khalid nadish",
@@ -268,22 +276,24 @@ const CardActionX = ({ supplierName }) => {
           <ReceiptLongIcon color="background.paper" variant="contained" />
         </Button>
       </Box>
-
-      {open && (
-        <DiloagShow open={open} toggle={toggle} title={supplierName}>
-          <DispOneSupplier supData={supplierData[0]} />
-        </DiloagShow>
-      )}
-
-      {openInvoice && (
-        <DiloagShow
-          open={openInvoice}
-          toggle={setToggleInvoice}
-          title={"ملخص الفواتير"}
-        >
-          <DisplayInvoice />
-        </DiloagShow>
-      )}
+      <Suspense fallback={<Loader />}>
+        {open && (
+          <DiloagShow open={open} toggle={toggle} title={supplierName}>
+            <DispOneSupplier supData={supplierData[0]} />
+          </DiloagShow>
+        )}
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        {openInvoice && (
+          <DiloagShow
+            open={openInvoice}
+            toggle={setToggleInvoice}
+            title={"ملخص الفواتير"}
+          >
+            <DisplayInvoice />
+          </DiloagShow>
+        )}
+      </Suspense>
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import SupplierCard from "../components/supplier/SupplierCard";
-import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import "./home.css";
 import supplier from "../helper/data/suplier.json";
 function Home() {
@@ -52,8 +54,6 @@ const Lamsum = () => {
             justifyContent: "space-evenly",
           }}
         >
-          {/* <Typography variant="Naskh">اجمالي الموردين</Typography> */}
-
           <Box sx={{ lineHeight: "14px" }}>
             <Typography
               fontWeight={"bold"}

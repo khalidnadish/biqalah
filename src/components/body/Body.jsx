@@ -1,29 +1,40 @@
-import React, { useContext } from "react";
-import AddItem from "../supplier/AddItem";
-import AddSupplier from "../supplier/AddSupplier";
-import AllSupplerBalance from "../supplier/AllSupplerBalance";
-import PayInvoice from "../supplier/PayInvoice";
-import StatmentSupplier from "../supplier/StatmentSupplier";
-import Home from "../../pages/Home";
+import React, { useContext, lazy, Suspense } from "react";
+
 import "./bodyx.css";
 import { MainContext } from "../../helper/context";
-import ListSupplier from "../supplier/ListSupplier";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { Box } from "@mui/material";
+import Loader from "../loader/Loader";
+
+const Home = lazy(() => import("../../pages/Home"));
+const AddItem = lazy(() => import("../supplier/AddItem"));
+const AddSupplier = lazy(() => import("../supplier/AddSupplier"));
+const AllSupplerBalance = lazy(() => import("../supplier/AllSupplerBalance"));
+const PayInvoice = lazy(() => import("../supplier/PayInvoice"));
+const StatmentSupplier = lazy(() => import("../supplier/StatmentSupplier"));
+const ListSupplier = lazy(() => import("../supplier/ListSupplier"));
+
 function Body() {
   const { reqlink } = useContext(MainContext);
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
   return (
     <div className="body_contaner">
-      {reqlink === "AddSupplier" && <Newsupplier />}
-      {reqlink === "AddItem" && <AddItem />}
-      {reqlink === "PaySupplier" && <PayInvoice />}
-      {reqlink === "StatmentSupplier" && <StatmentSupplier />}
-      {reqlink === "AllStatmentSupplier" && <AllSupplerBalance />}
-
-      {reqlink === "Home" && <Home />}
+      <Suspense fallback={<Loader />}>
+        {reqlink === "AddSupplier" && <Newsupplier />}
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        {reqlink === "AddItem" && <AddItem />}
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        {reqlink === "PaySupplier" && <PayInvoice />}
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        {reqlink === "StatmentSupplier" && <StatmentSupplier />}
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        {reqlink === "AllStatmentSupplier" && <AllSupplerBalance />}
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        {reqlink === "Home" && <Home />}
+      </Suspense>
     </div>
   );
 }
