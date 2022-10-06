@@ -1,19 +1,25 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useLayoutEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import Header from "./components/header/Header";
 import Body from "./components/body/Body";
 import Footer from "./components/footer/Footer";
 import { MainContext } from "./helper/context";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ContextProvider } from "./helper/context";
 import "./App.css";
-
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 
-function App() {
-  const { modex, setModex } = useContext(MainContext);
+const queryClient = new QueryClient();
 
-  console.count("AppRender");
+function App() {
+  // const { isOn } = useIserverON();
+  const [server, setServer] = useState(true);
+
+  const { modex, setModex } = useContext(MainContext);
 
   const darkTheme = createTheme({
     palette: {
@@ -29,16 +35,82 @@ function App() {
     },
   });
 
+  let xx = "";
+  useLayoutEffect(() => {
+    xx = useIserverON();
+    console.log(xx);
+    // {
+    //   xx ? setServer((pre) => true) : setServer((pre) => false);
+    // }
+  }, []);
+  useEffect(() => {
+    console.log("xx", xx);
+    // {
+    //   xx ? setServer((pre) => true) : setServer((pre) => false);
+    // }
+  }, []);
+
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <div className="App">
-        <Header />
-        <Body />
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <>
+      {true === true ? (
+        <MainApp
+          darkTheme={darkTheme}
+          modex={modex}
+          setModex={modex}
+          queryClient={queryClient}
+        />
+      ) : (
+        <h1>Server Not Runing</h1>
+      )}
+    </>
   );
 }
 
 export default App;
+
+const MainApp = ({ darkTheme, modex, setModex, queryClient }) => {
+  return (
+    <>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <div className="App">
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          <QueryClientProvider client={queryClient}>
+            <Header />
+            <Body />
+            <Footer />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </div>
+      </ThemeProvider>
+    </>
+  );
+};
+
+const useIserverON = async () => {
+  let stuts = "";
+  try {
+    const resposn = await Axios.get(
+      "http://localhost:3000/supplier/suppliercount"
+    );
+    if (resposn) {
+      stuts = true;
+    }
+  } catch (error) {
+    stuts = false;
+  }
+  const checkMe = stuts;
+  console.log(checkMe);
+
+  return [stuts];
+};

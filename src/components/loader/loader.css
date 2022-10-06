@@ -1,0 +1,10 @@
+.loader {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin: -50px;
+  width: 100px;
+  height: 200px;
+  z-index: 100;
+}

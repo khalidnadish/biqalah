@@ -18,7 +18,10 @@ import DiloagShow from "../dawer/DiloagShow";
 import ListSupplier from "./ListSupplier";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import EditIcon from "@mui/icons-material/Edit";
-
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Axios from "axios";
+import { toast } from "react-toastify";
 const boxContainer = {
   display: "flex",
   flexDirection: "column",
@@ -44,13 +47,17 @@ function AddSupplier({ actionForm = "A" }) {
 
   const [sup_name, setSup_name] = useState("");
   const [openbalance, setOpenbalance] = useState("");
+  const [accountLimit, setAccountLimit] = useState("");
   const [saleName, setSaleName] = useState("");
   const [saleMobile, setSaleMobile] = useState("");
   const [saleEmail, setSaleEmail] = useState("");
+  const [alertCheck, setAlertCheck] = useState(false);
   const SupplerData = {
-    sppliername: sup_name,
+    supplierName: sup_name,
     salesName: saleName,
     openingBalance: openbalance,
+    accountLimit: accountLimit,
+    alertCheck: alertCheck,
     saleMobile: saleMobile,
     salesEmail: saleEmail,
   };
@@ -74,6 +81,10 @@ function AddSupplier({ actionForm = "A" }) {
               setSaleMobile={setSaleMobile}
               saleEmail={saleEmail}
               setSaleEmail={setSaleEmail}
+              accountLimit={accountLimit}
+              setAccountLimit={setAccountLimit}
+              alertCheck={alertCheck}
+              setAlertCheck={setAlertCheck}
             />
             <SupplierButton
               actionForm={actionForm}
@@ -81,7 +92,9 @@ function AddSupplier({ actionForm = "A" }) {
               setOpenbalance={setOpenbalance}
               setSaleName={setSaleName}
               setSaleMobile={setSaleMobile}
-              setSaleEmail={setSaleMobile}
+              setSaleEmail={setSaleEmail}
+              setAccountLimit={setAccountLimit}
+              setAlertCheck={setAlertCheck}
               isBigScreen={isBigScreen}
               SupplerData={SupplerData}
             />
@@ -102,6 +115,8 @@ const SupplierButton = ({
   setSaleEmail,
   isBigScreen,
   SupplerData,
+  setAccountLimit,
+  setAlertCheck,
 }) => {
   const [open, toggle] = useToggle(false);
   const handleClear = () => {
@@ -110,9 +125,19 @@ const SupplierButton = ({
     setSaleName("");
     setSaleMobile("");
     setSaleEmail("");
+    setAccountLimit("");
+    setAlertCheck(false);
   };
   const handleSave = () => {
-    alert(JSON.stringify(SupplerData));
+    if (SupplerData.sup_name === undefined || SupplerData.sup_name === null) {
+      toast.error("لايوجد اسم للمورد", { theme: "colored" });
+      return;
+    }
+    Axios.post("http://localhost:3000/supplier/insert", {
+      SupplerData,
+    }).then(() => {
+      // alert(JSON.stringify(SupplerData));
+    });
   };
 
   return (
@@ -143,6 +168,7 @@ const SupplierButton = ({
             color="error"
             sx={{ fontFamily: "Noto Kufi Arabic, sans-serif" }}
             variant="contained"
+            onClick={handleClear}
           >
             <CleaningServicesIcon fontSize="small" />
           </Button>
@@ -163,7 +189,7 @@ const SupplierButton = ({
       </Box>
       {open && (
         <DiloagShow open={open} toggle={toggle} title={"الموردين"}>
-          <ListSupplier />{" "}
+          <ListSupplier />
         </DiloagShow>
       )}
     </>
@@ -219,11 +245,31 @@ const InputText = (props) => {
         value={props.sup_name}
         setValue={props.setSup_name}
       />
+
       <OpeningBalance
         actionForm={props.actionForm}
         value={props.openbalance}
         setValue={props.setOpenbalance}
       />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <AccountLimit
+          actionForm={props.actionForm}
+          value={props.accountLimit}
+          setValue={props.setAccountLimit}
+        />
+        <LimitAlert
+          actionForm={props.actionForm}
+          value={props.alertCheck}
+          setValue={props.setAlertCheck}
+        />
+      </Box>
       <SaleName
         actionForm={props.actionForm}
         value={props.saleName}
@@ -299,6 +345,82 @@ function OpeningBalance({ actionForm, value, setValue }) {
         />
       }
     />
+  );
+}
+
+function AccountLimit({ actionForm, value, setValue }) {
+  let statues = true;
+  if (actionForm === "A") {
+    statues = false;
+  }
+  if (actionForm === "U") {
+    statues = false;
+  }
+  if (actionForm === "D") {
+    statues = true;
+  }
+  return (
+    <InputWithLabel
+      label={"حد الامان"}
+      fieldType="number"
+      widthx={"95%"}
+      value={value}
+      setValue={setValue}
+      disableToggle={statues}
+      iconX={
+        <AccountBalanceWalletIcon
+          sx={{
+            color: "action.active",
+            mr: 1,
+            my: 0.5,
+          }}
+        />
+      }
+    />
+  );
+}
+function LimitAlert({ actionForm, value, setValue }) {
+  let statues = true;
+  if (actionForm === "A") {
+    statues = false;
+  }
+  if (actionForm === "U") {
+    statues = false;
+  }
+  if (actionForm === "D") {
+    statues = true;
+  }
+  const handleChange = () => {
+    setValue((pre) => event.target.checked);
+    console.log(value);
+  };
+  return (
+    <FormControlLabel
+      value="end"
+      control={
+        <Checkbox
+          checked={value}
+          onChange={() => {
+            setValue((pre) => !value);
+          }}
+          sx={{ m: 0, p: 0.5 }}
+        />
+      }
+      label={
+        <Typography
+          variant="caption"
+          sx={{
+            fontSize: "1rem",
+            fontFamily: "Noto Kufi Arabic, sans-serif",
+          }}
+        >
+          تنبية
+        </Typography>
+      }
+      labelPlacement="start"
+      sx={{ m: 0, p: 0 }}
+    />
+    // <Checkbox {...label} defaultChecked />
   );
 }
 

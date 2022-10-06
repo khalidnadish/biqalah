@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import "./footer.css";
 import HomeIcon from "@mui/icons-material/Home";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { MainContext } from "../../helper/context";
 import PrintIcon from "@mui/icons-material/Print";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import "./footer.css";
 
 function Footer() {
   const { setReqlink } = useContext(MainContext);
@@ -18,7 +18,6 @@ function Footer() {
         <HomeIcon color="success" className="iconStyle" />
       </Button>
       <PrintIcon color="primary" className="iconStyle" />
-      {/* <QueryStatsIcon color="primary" className="iconStyle" /> */}
       <FormatListNumberedIcon color="primary" className="iconStyle" />
     </div>
   );

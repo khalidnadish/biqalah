@@ -49,7 +49,7 @@ function AddItem({ actionForm = "A" }) {
   const [itemName, setitemName] = useState("");
 
   const SupplerData = {
-    sppliername: sup_name,
+    supplier: sup_name,
     packageType: packageType,
     itemName: itemName,
     openingBalance: openbalance,
@@ -192,7 +192,7 @@ const BtnArea = ({
       </Box>
       {open && (
         <DiloagShow open={open} toggle={toggle} title={"الموردين"}>
-          <ListSupplier />{" "}
+          <ListSupplier />
         </DiloagShow>
       )}
     </>

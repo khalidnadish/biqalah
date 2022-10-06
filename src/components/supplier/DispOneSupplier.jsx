@@ -64,11 +64,11 @@ const GenralInformation = ({ supData }) => {
             {supData.salesName}
           </Typography>
           <Typography sx={{ fontSize: { xs: ".8em", md: "1em" } }}>
-            <span className="supplier_card_tilte"> ايميل </span>{" "}
+            <span className="supplier_card_tilte"> ايميل </span>
             {supData.saleEmail}
           </Typography>
           <Typography sx={{ fontSize: { xs: ".8em", md: "1em" } }}>
-            <span className="supplier_card_tilte"> الجوال </span>{" "}
+            <span className="supplier_card_tilte"> الجوال </span>
             {supData.salePhone}
           </Typography>
         </Box>
@@ -134,7 +134,7 @@ const BalanceInformatin = ({ supData }) => {
               <Typography>{supData.total_invoices}</Typography>
             </MyBox>
             <MyBox dirctionType={"row"} justfiyType={"center"}>
-              <span className="supplier_card_tilte"> الجمالي المدفوعات </span>{" "}
+              <span className="supplier_card_tilte"> الجمالي المدفوعات </span>
               <Typography>{supData.total_payed}</Typography>
             </MyBox>
           </Box>
@@ -357,15 +357,15 @@ const OtherInformatin = ({ supData }) => {
           }}
         >
           <Typography>
-            <span className="supplier_card_tilte">الاكثر سحب</span>{" "}
+            <span className="supplier_card_tilte">الاكثر سحب</span>
             {supData.best_item}
           </Typography>
           <Typography>
-            <span className="supplier_card_tilte">قيمة المرتجع</span>{" "}
+            <span className="supplier_card_tilte">قيمة المرتجع</span>
             {supData.damage_total}
           </Typography>
           <Typography>
-            <span className="supplier_card_tilte">عدد الاصناف</span>{" "}
+            <span className="supplier_card_tilte">عدد الاصناف</span>
             {supData.item_counters}
           </Typography>
         </Box>

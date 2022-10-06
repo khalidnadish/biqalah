@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
-
+import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import { MainContext } from "../../helper/context";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import SpatialAudioOffIcon from "@mui/icons-material/SpatialAudioOff";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 function SupplierMenu({ toggle }) {
   const { setReqlink } = useContext(MainContext);
 
@@ -20,8 +21,18 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <Diversity3OutlinedIcon color={"primary"} />
+          <AddBusinessIcon color={"primary"} />
           <p>اضافة مورد</p>
+        </div>
+        <div
+          onClick={() => {
+            toggle(false);
+            setReqlink("AddSales");
+          }}
+          className="items"
+        >
+          <AccountBoxIcon color={"primary"} />
+          <p>اضافة مندوب</p>
         </div>
 
         <div

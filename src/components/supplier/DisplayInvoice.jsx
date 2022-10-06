@@ -17,7 +17,7 @@ function DisplayInvoice() {
           اجمالي الفواتير :{lmsum}
         </Typography>
       </div>
-      <Box sx={{ maxWidth: { xs: "300px", md: "600px" } }}>
+      <Box sx={{ maxWidth: { xs: "330px", md: "600px" } }}>
         <table className="tablecontainer">
           <thead>
             <tr>

@@ -19,20 +19,10 @@ function Body() {
     <div className="body_contaner">
       <Suspense fallback={<Loader />}>
         {reqlink === "AddSupplier" && <Newsupplier />}
-      </Suspense>
-      <Suspense fallback={<Loader />}>
         {reqlink === "AddItem" && <AddItem />}
-      </Suspense>
-      <Suspense fallback={<Loader />}>
         {reqlink === "PaySupplier" && <PayInvoice />}
-      </Suspense>
-      <Suspense fallback={<Loader />}>
         {reqlink === "StatmentSupplier" && <StatmentSupplier />}
-      </Suspense>
-      <Suspense fallback={<Loader />}>
         {reqlink === "AllStatmentSupplier" && <AllSupplerBalance />}
-      </Suspense>
-      <Suspense fallback={<Loader />}>
         {reqlink === "Home" && <Home />}
       </Suspense>
     </div>

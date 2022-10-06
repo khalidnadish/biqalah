@@ -176,8 +176,17 @@ const ShowResult = ({ inMony, outMony, resultData }) => (
           }}
           px={1}
         >
-          <FileDownloadIcon color="success" fontSize="1rem" />
-          <Typography color="success.dark" variant="body2">
+          <FileDownloadIcon
+            sx={{
+              color: "success.dark",
+              fontSize: "1em",
+              p: 0.4,
+            }}
+          />
+          <Typography
+            sx={{ color: "success.dark", fontSize: { xs: ".7em", md: "1em" } }}
+            variant="body2"
+          >
             {inMony}
           </Typography>
         </Box>
@@ -189,12 +198,14 @@ const ShowResult = ({ inMony, outMony, resultData }) => (
           }}
           px={1}
         >
-          <PublishIcon color="error" fontSize="2rem" />
-          <Typography color="error.dark" variant="body2">
+          <PublishIcon sx={{ color: "error", fontSize: "1em", p: 0.4 }} />
+          <Typography
+            sx={{ color: "error.dark", fontSize: { xs: ".7em", md: "1em" } }}
+            variant="body2"
+          >
             {outMony}
           </Typography>
         </Box>
-        {/* <Divider /> */}
 
         <Box
           sx={{
@@ -204,12 +215,16 @@ const ShowResult = ({ inMony, outMony, resultData }) => (
           }}
           px={1}
         >
-          <PaidIcon color={resultData.iconcolor} fontSize="2rem" />
+          <PaidIcon color={resultData.iconcolor} fontSize="1em" />
 
           <Typography
-            fontWeight={"bold"}
-            color={resultData.textcolor}
             variant="body2"
+            sx={{
+              color: resultData.textcolor,
+              fontSize: { xs: ".7em", md: "1em" },
+              fontWeight: "bold",
+              px: 0.4,
+            }}
           >
             {resultData.result}
           </Typography>
