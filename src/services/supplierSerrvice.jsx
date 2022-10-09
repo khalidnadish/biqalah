@@ -4,13 +4,24 @@ import { useQuery } from "@tanstack/react-query";
 export const useSupplierRecordCount = () => {
   let getRecordCount = async () => {
     const res = await Axios.get("http://localhost:3000/supplier/suppliercount");
-    // const result = res.data[0].count;
+    return res;
+  };
+  const { data } = useQuery(["supplierRecordCount"], getRecordCount);
+  const recodCount = data?.data[0].count;
+  return [recodCount];
+};
+
+export const usefillterSupplierRecordCount = (filter) => {
+  let getRecordCount = async () => {
+    const res = await Axios.get(
+      "http://localhost:3000/supplier/suppliercount",
+      { filter: filter }
+    );
     return res;
   };
 
   const { data } = useQuery(["supplierRecordCount"], getRecordCount);
   const recodCount = data?.data[0].count;
-  console.log("useSupplier", recodCount);
-
+  console.log(filter);
   return [recodCount];
 };

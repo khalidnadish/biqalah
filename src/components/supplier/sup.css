@@ -1,4 +1,5 @@
 .showContiner {
+  position: relative;
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -9,6 +10,19 @@
 
   overflow-y: auto;
   height: 100%;
+}
+.searchbox {
+  position: sticky;
+  top: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1em;
+  border-radius: 4px;
+  /* width: 100%; */
+  background-color: #009879;
+  z-index: 100;
+  padding: 5px;
 }
 .addSup {
   height: 100%;

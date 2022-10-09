@@ -15,6 +15,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import "./home.css";
+import ListSupplier from "../components/supplier/ListSupplier";
 
 const SupplierCard = lazy(() => import("../components/supplier/SupplierCard"));
 
@@ -53,6 +54,7 @@ function Home() {
   };
   return (
     <>
+      <ListSupplier />
       <div className="homeContainer">
         {/* <Loader /> */}
         <Box
@@ -111,6 +113,23 @@ export default Home;
 const Lamsum = ({ SupRecord }) => {
   const theme = useTheme();
   const isBigScreen = useMediaQuery(theme.breakpoints.up("sm"));
+  const boxStyle = {
+    lineHeight: "14px",
+    display: "flex",
+    flexDirection: "column",
+    cursor: "pointer",
+  };
+  const typoStyle = {
+    fontWeight: "bold",
+    color: "primary.dark",
+    fontSize: "12px",
+    mx: 1,
+  };
+
+  const handleFilter = (filter) => {
+    alert(filter);
+  };
+
   return (
     <>
       <Paper sx={{ width: "100%", p: 1 }}>
@@ -122,64 +141,47 @@ const Lamsum = ({ SupRecord }) => {
             justifyContent: "space-evenly",
           }}
         >
-          <Box sx={{ lineHeight: "14px" }}>
-            <Typography
-              fontWeight={"bold"}
-              color={"primary.dark"}
-              variant={"Kufi"}
-              fontSize="12px"
-              mx={1}
-            >
-              {!isBigScreen ? <CurrencyExchangeIcon /> : "المطلوب"}
+          <Box sx={boxStyle} onClick={() => handleFilter("filtter by cridet")}>
+            <Typography sx={typoStyle} variant={"Kufi"}>
+              {!isBigScreen ? (
+                <CurrencyExchangeIcon fontSize={"small"} />
+              ) : (
+                "المطلوب"
+              )}
             </Typography>
-            <Typography fontWeight={"bold"} variant={"Kufi"} fontSize="12px">
+            <Typography sx={typoStyle} variant={"Kufi"}>
               505000
             </Typography>
           </Box>
-          <Box sx={{ lineHeight: "14px" }}>
-            <Typography
-              fontSize="12px"
-              fontWeight={"bold"}
-              color={"primary.dark"}
-              variant={"Kufi"}
-              mx={1}
-            >
-              {!isBigScreen ? <PointOfSaleIcon /> : "المسدد"}
+          <Box sx={boxStyle} onClick={() => handleFilter("filtter by debit")}>
+            <Typography sx={typoStyle} variant={"Kufi"}>
+              {!isBigScreen ? <PointOfSaleIcon fontSize={"small"} /> : "المسدد"}
             </Typography>
-            <Typography fontWeight={"bold"} fontSize="12px" variant={"Kufi"}>
+            <Typography sx={typoStyle} variant={"Kufi"}>
               100000
             </Typography>
           </Box>
 
-          <Box sx={{ lineHeight: "14px" }}>
-            <Typography
-              fontSize="12px"
-              fontWeight={"bold"}
-              color={"primary.dark"}
-              variant={"Kufi"}
-            >
-              {!isBigScreen ? <BalanceIcon /> : "الرصيد"}
+          <Box sx={boxStyle} onClick={() => handleFilter("filtter by Balance")}>
+            <Typography sx={typoStyle} variant={"Kufi"}>
+              {!isBigScreen ? <BalanceIcon fontSize={"small"} /> : "الرصيد"}
             </Typography>
-            <Typography
-              fontWeight={"bold"}
-              fontSize="12px"
-              variant={"Kufi"}
-              mx={1}
-            >
+            <Typography sx={typoStyle} variant={"Kufi"}>
               100000
             </Typography>
           </Box>
-          <Box sx={{ lineHeight: "14px" }}>
-            <Typography
-              fontSize="12px"
-              fontWeight={"bold"}
-              color={"primary.dark"}
-              variant={"Kufi"}
-              mx={1}
-            >
-              {!isBigScreen ? <StorefrontIcon /> : "عدد الموردين"}
+          <Box
+            sx={boxStyle}
+            onClick={() => handleFilter("filtter by Supplier")}
+          >
+            <Typography sx={typoStyle} variant={"Kufi"}>
+              {!isBigScreen ? (
+                <StorefrontIcon fontSize={"small"} />
+              ) : (
+                "عدد الموردين"
+              )}
             </Typography>
-            <Typography fontWeight={"bold"} fontSize="12px" variant={"Kufi"}>
+            <Typography sx={typoStyle} variant={"Kufi"}>
               {SupRecord}
             </Typography>
           </Box>

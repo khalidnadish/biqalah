@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { lazy, Suspense, useContext, useState } from "react";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
-import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import { MainContext } from "../../helper/context";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
@@ -8,6 +7,14 @@ import SpatialAudioOffIcon from "@mui/icons-material/SpatialAudioOff";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Box from "@mui/material/Box";
+import Loader from "../../components/loader/Loader";
+import { Button } from "@mui/material";
+
+const AddSupplier = lazy(() => import("../supplier/AddSupplier"));
+
 function SupplierMenu({ toggle }) {
   const { setReqlink } = useContext(MainContext);
 
@@ -21,9 +28,10 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <AddBusinessIcon color={"primary"} />
+          <AddBusinessIcon color={"primary"} fontSize={"small"} />
           <p>اضافة مورد</p>
         </div>
+        <Supsubmenu />
         <div
           onClick={() => {
             toggle(false);
@@ -31,7 +39,7 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <AccountBoxIcon color={"primary"} />
+          <AccountBoxIcon color={"primary"} fontSize={"small"} />
           <p>اضافة مندوب</p>
         </div>
 
@@ -42,7 +50,7 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <ArchiveOutlinedIcon />
+          <ArchiveOutlinedIcon fontSize={"small"} />
           <p>اضافة صنف</p>
         </div>
         <div
@@ -52,7 +60,7 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <BorderColorIcon />
+          <BorderColorIcon fontSize={"small"} />
           <p>امر شراء </p>
         </div>
 
@@ -63,7 +71,7 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <ReceiptLongIcon />
+          <ReceiptLongIcon fontSize={"small"} />
           <p>ملخص الفواتير </p>
         </div>
 
@@ -74,7 +82,7 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <SpatialAudioOffIcon />
+          <SpatialAudioOffIcon fontSize={"small"} />
           <p>ارسال ملاحظة </p>
         </div>
         <div
@@ -84,7 +92,7 @@ function SupplierMenu({ toggle }) {
           }}
           className="items"
         >
-          <RemoveShoppingCartIcon />
+          <RemoveShoppingCartIcon fontSize={"small"} />
           <p>توالف</p>
         </div>
       </div>
@@ -93,3 +101,43 @@ function SupplierMenu({ toggle }) {
 }
 
 export default SupplierMenu;
+
+const CallAddSupplier = ({ act }) => {
+  return (
+    <Suspense fallback={<Loader />}>
+      <AddSupplier actionForm={act} />
+    </Suspense>
+  );
+};
+
+function Supsubmenu() {
+  const [isShowupdate, setIsshowupdate] = useState(false);
+  const { setReqlink } = useContext(MainContext);
+  return (
+    <>
+      <div className="supplier_submenu">
+        <Box
+          sx={{
+            display: "flex",
+            cursor: "pointer",
+          }}
+        >
+          <Button onClick={() => setReqlink("UpdSupplier")}>
+            <EditIcon color={"warning"} fontSize={"small"} />
+          </Button>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+          }}
+        >
+          <Button onClick={() => setReqlink("delSupplier")}>
+            <DeleteIcon color={"error"} fontSize={"small"} />
+          </Button>
+
+          {/* <p>حذف</p> */}
+        </Box>
+      </div>
+    </>
+  );
+}

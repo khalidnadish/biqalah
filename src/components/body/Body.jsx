@@ -17,8 +17,11 @@ function Body() {
 
   return (
     <div className="body_contaner">
+      {console.log(reqlink)}
       <Suspense fallback={<Loader />}>
         {reqlink === "AddSupplier" && <Newsupplier />}
+        {reqlink === "UpdSupplier" && <Updsupplier />}
+        {reqlink === "delSupplier" && <Delsupplier />}
         {reqlink === "AddItem" && <AddItem />}
         {reqlink === "PaySupplier" && <PayInvoice />}
         {reqlink === "StatmentSupplier" && <StatmentSupplier />}
@@ -36,6 +39,25 @@ const Newsupplier = () => (
         <AddSupplier />
       </div>
       <ListSupplier />
+    </div>
+  </>
+);
+const Updsupplier = () => (
+  <>
+    <div className="supplerSection">
+      <div className="mobileview">
+        <AddSupplier actionForm={"U"} />
+      </div>
+    </div>
+  </>
+);
+
+const Delsupplier = () => (
+  <>
+    <div className="supplerSection">
+      <div className="mobileview">
+        <AddSupplier actionForm={"D"} />
+      </div>
     </div>
   </>
 );

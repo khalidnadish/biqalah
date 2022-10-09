@@ -7,21 +7,25 @@ import {
 } from "@mui/material";
 import React from "react";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
-
+import ClearIcon from "@mui/icons-material/Clear";
 function InputWithLabel({
   label,
   fieldType,
   iconX,
   widthx = "100%",
   disableToggle = false,
-  value,
+  value = undefined,
   setValue,
 }) {
+  // alert(value);
+  console.log("value", value);
   const handleChange = (event) => {
-    // console.log("event.target.value", event.target.value);
     setValue(event.target.value);
   };
 
+  const handleClear = () => {
+    setValue("");
+  };
   return (
     <>
       <Box
@@ -46,11 +50,13 @@ function InputWithLabel({
             startAdornment: (
               <InputAdornment position="start">{iconX}</InputAdornment>
             ),
-            // endAdornment: (
-            //   <InputAdornment position="end">
-            //     <ExpandMore />
-            //   </InputAdornment>
-            // ),
+            endAdornment: value != "" && (
+              <InputAdornment position="end">
+                <Box sx={{ cursor: "pointer" }} onClick={() => handleClear()}>
+                  <ClearIcon />
+                </Box>
+              </InputAdornment>
+            ),
           }}
           inputProps={{
             style: {

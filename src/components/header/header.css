@@ -1,86 +1,100 @@
 .header_contaner {
-    height: 7%;
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* font-family: 'Noto Kufi Arabic', sans-serif; */
-
+  height: 7%;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* font-family: 'Noto Kufi Arabic', sans-serif; */
 }
 
 .iconStyle {
-    margin-left: 5px;
-    margin-right: 5px;
-    /* border: 1px solid; */
+  margin-left: 5px;
+  margin-right: 5px;
+  /* border: 1px solid; */
 }
 
 .iconDiv {
-    cursor: pointer;
-    display: flex;
-    border-radius: 5px;
-    margin: 0 20px 0 20px;
+  cursor: pointer;
+  display: flex;
+  border-radius: 5px;
+  margin: 0 20px 0 20px;
 }
 .setting {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 10px;
-    justify-content: space-evenly;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+  justify-content: space-evenly;
 }
 .setting p {
-    width: 100%;
-    text-transform: capitalize;
-    border-bottom: 1px solid #ccc;
-    font-size: 16px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-weight: 400;
-    font-family: 'Noto Kufi Arabic', serif;
-      /* font-family: 'Noto Kufi Arabic', sans-serif; */
+  width: 100%;
+  text-transform: capitalize;
+  border-bottom: 0.5px solid #ccc;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 400;
+  font-family: "Noto Kufi Arabic", serif;
+  padding-bottom: 0.5em;
+  /* font-family: 'Noto Kufi Arabic', sans-serif; */
 }
 .setting p:hover {
-    border-bottom: 1px solid #000;
-    font-size: small;
-    background-color: #ccc;
+  border-bottom: 1px solid #000;
+  font-size: small;
+  background-color: #ccc;
 }
 
- .items {
-    display: flex;
-    width: 100%;
-    cursor: pointer;
+.items {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
 }
 
 .Profilesetting {
-    margin-top: 20px;
-    padding: 10px;
-    
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 10%;
-    
-    justify-content: stretch;
+  margin-top: 20px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10%;
+
+  justify-content: stretch;
 }
 
 .Profilesetting p {
-    width: 100%;
-    text-transform: capitalize;
-    border-bottom: 1px solid #ccc;
-    font-size: small;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-weight: 600;
-    font-family: 'Noto Kufi Arabic', serif;
-
-
+  width: 100%;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ccc;
+  font-size: small;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 600;
+  font-family: "Noto Kufi Arabic", serif;
 }
 
 .Profilesetting p:hover {
-    border-bottom: 1px solid #000;
-    font-size: small;
-    background-color: #ccc;
+  border-bottom: 1px solid #000;
+  font-size: small;
+  background-color: #ccc;
+}
+.supplier_submenu {
+  display: flex;
+  margin-right: 5px;
+  gap: 0.5em;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.supplier_submenu p {
+  width: fit-content;
+  text-transform: capitalize;
+  border-bottom: none;
+  font-size: 0.9em;
+  margin-left: 10px;
+  margin-right: 10px;
 }

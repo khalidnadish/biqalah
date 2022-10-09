@@ -39,6 +39,7 @@ const paperContainer = {
   pt: 3,
   pb: 1,
   position: "relative",
+  height: "100%",
 };
 
 function AddSupplier({ actionForm = "A" }) {
@@ -196,6 +197,7 @@ const SupplierButton = ({
   );
 };
 const FormType = ({ actionForm }) => {
+  // alert(actionForm);
   let formLabel;
   let labelcolor;
   switch (actionForm) {

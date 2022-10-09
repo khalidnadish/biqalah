@@ -9,6 +9,24 @@ function supplierRecordCount(req, res) {
   });
 }
 
+function showASupplierONsearch(req, res) {
+  const page = parseInt(req.query.page);
+  const perPage = parseInt(req.query.perPage);
+  const searchValue = req.query.searchValue;
+  const pageNo = perPage * (page - 1);
+
+  const limitex = ` Limit ${pageNo},${perPage}`;
+  const FILTER = ` LIKE "%${searchValue}%"`;
+
+  console.log(limitex, searchValue);
+  const sqlstatment = `SELECT *  FROM supplier where sup_name  ${FILTER}${limitex}`;
+  console.log(sqlstatment);
+  dataBase.myDB.execute(sqlstatment, (err, data) => {
+    err && console.log(err);
+    res.status(200).send(data);
+  });
+}
+
 function showAllSupplier(req, res) {
   const page = parseInt(req.query.page);
   const perPage = parseInt(req.query.perPage);
@@ -62,4 +80,5 @@ module.exports = {
   deleteSupplier,
   showAllSupplier,
   supplierRecordCount,
+  showASupplierONsearch,
 };
