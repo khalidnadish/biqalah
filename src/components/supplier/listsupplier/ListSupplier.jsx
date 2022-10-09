@@ -1,5 +1,4 @@
-import React, { lazy, Suspense, useState, useEffect } from "react";
-// import DisplaySupplier from "../supplier/DisplaySupplier";
+import React, { lazy, Suspense, useState } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import Paper from "@mui/material/Paper";
 import { InView } from "react-intersection-observer";
@@ -8,7 +7,10 @@ import InputWithLabel from "../../textfiled/InputWithLabel";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { getFillterData } from "./listSupplierHook";
-const DisplaySupplier = lazy(() => import("../DisplaySupplier"));
+
+const DisplaySupplier = lazy(() =>
+  import("../supplierCardWithAction/DisplaySupplier")
+);
 
 function ListSupplier() {
   const [mysearch, setMysearch] = useState("");

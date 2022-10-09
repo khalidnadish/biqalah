@@ -26,13 +26,20 @@ function App() {
       mode: modex,
     },
     typography: {
-      Kufi: {
+      allVariants: {
         fontFamily: "Noto Kufi Arabic, sans-serif",
-      },
-      Naskh: {
-        fontFamily: "Noto Naskh Arabic', serif",
+        textTransform: "none",
+        fontSize: 16,
       },
     },
+    // typography: {
+    //   Kufi: {
+    //     fontFamily: "Noto Kufi Arabic, sans-serif",
+    //   },
+    //   Naskh: {
+    //     fontFamily: "Noto Naskh Arabic', serif",
+    //   },
+    // },
   });
 
   let xx = "";

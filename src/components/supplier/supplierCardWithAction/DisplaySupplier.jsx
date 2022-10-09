@@ -1,14 +1,20 @@
-import React from "react";
-import { Box, Button, Grid, Paper, Typography } from "@mui/material";
-import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import DeleteIcon from "@mui/icons-material/Delete";
-import useToggle from "../../helper/toggleHooke";
-import DiloagShow from "../dawer/DiloagShow";
-import DispOneSupplier from "./DispOneSupplier";
-import supplierData from "../../helper/data/suppliedrData.json";
-import AddSupplier from "./addSupplier/AddSupplier";
-import "./sup.css";
+import { lazy, Suspense } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import { VisibilityIcon, DeleteIcon, ModeEditOutlineIcon } from "./icons";
+import Loader from "../../loader/Loader";
+import useToggle from "../../../helper/toggleHooke";
+import DiloagShow from "../../dawer/DiloagShow";
+import supplierData from "../../../helper/data/suppliedrData.json";
+import "../sup.css";
+
+const DispOneSupplier = lazy(() =>
+  import("../displayOneSupplier/DispOneSupplier")
+);
+const AddSupplier = lazy(() => import("../addSupplier/AddSupplier"));
 
 function DisplaySupplier({ supplier, balance }) {
   return (
@@ -34,7 +40,9 @@ function DisplaySupplier({ supplier, balance }) {
         }}
       >
         <SupData supplier={supplier} balance={balance} />
-        <ActionSup />
+        <Suspense fallback={<Loader />}>
+          <ActionSup />
+        </Suspense>
       </Box>
     </Paper>
   );

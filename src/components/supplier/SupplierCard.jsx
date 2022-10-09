@@ -18,7 +18,9 @@ import useToggle from "../../helper/toggleHooke";
 // import DisplayInvoice from "./DisplayInvoice";
 import Loader from "../loader/Loader";
 
-const DispOneSupplier = lazy(() => import("./DispOneSupplier"));
+const DispOneSupplier = lazy(() =>
+  import("../supplier/displayOneSupplier/DispOneSupplier")
+);
 const DisplayInvoice = lazy(() => import("./DisplayInvoice"));
 
 function SupplierCard({
