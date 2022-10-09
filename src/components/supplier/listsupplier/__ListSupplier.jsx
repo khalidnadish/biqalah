@@ -8,13 +8,13 @@ import { InView } from "react-intersection-observer";
 import {
   useSupplierRecordCount,
   usefillterSupplierRecordCount,
-} from "../../services/supplierSerrvice";
-import Loader from "../loader/Loader";
-import InputWithLabel from "../textfiled/InputWithLabel";
+} from "../service/supplierService";
+import Loader from "../../loader/Loader";
+import InputWithLabel from "../../textfiled/InputWithLabel";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, Button } from "@mui/material";
 
-const DisplaySupplier = lazy(() => import("../supplier/DisplaySupplier"));
+const DisplaySupplier = lazy(() => import("../DisplaySupplier"));
 
 function ListSupplier() {
   const [SupRecord] = useSupplierRecordCount();

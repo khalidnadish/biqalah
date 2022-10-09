@@ -7,7 +7,7 @@ import Loader from "../components/loader/Loader";
 import Axios from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { InView } from "react-intersection-observer";
-import { useSupplierRecordCount } from "../services/supplierSerrvice";
+import { useSupplierRecordCount } from "../components/supplier/service/supplierService";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import BalanceIcon from "@mui/icons-material/Balance";
 import { useTheme } from "@mui/material/styles";
@@ -15,7 +15,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import "./home.css";
-import ListSupplier from "../components/supplier/ListSupplier";
+import ListSupplier from "../components/supplier/listsupplier/ListSupplier";
 
 const SupplierCard = lazy(() => import("../components/supplier/SupplierCard"));
 

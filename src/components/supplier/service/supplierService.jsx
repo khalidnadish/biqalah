@@ -19,7 +19,6 @@ export const usefillterSupplierRecordCount = (filter) => {
     );
     return res;
   };
-
   const { data } = useQuery(["supplierRecordCount"], getRecordCount);
   const recodCount = data?.data[0].count;
   console.log(filter);

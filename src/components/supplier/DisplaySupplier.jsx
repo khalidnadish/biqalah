@@ -7,7 +7,7 @@ import useToggle from "../../helper/toggleHooke";
 import DiloagShow from "../dawer/DiloagShow";
 import DispOneSupplier from "./DispOneSupplier";
 import supplierData from "../../helper/data/suppliedrData.json";
-import AddSupplier from "./AddSupplier";
+import AddSupplier from "./addSupplier/AddSupplier";
 import "./sup.css";
 
 function DisplaySupplier({ supplier, balance }) {

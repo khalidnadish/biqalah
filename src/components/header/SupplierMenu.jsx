@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import Loader from "../../components/loader/Loader";
 import { Button } from "@mui/material";
 
-const AddSupplier = lazy(() => import("../supplier/AddSupplier"));
+const AddSupplier = lazy(() => import("../supplier/addsupplier/AddSupplier"));
 
 function SupplierMenu({ toggle }) {
   const { setReqlink } = useContext(MainContext);

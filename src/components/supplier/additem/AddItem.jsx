@@ -1,10 +1,10 @@
-import { Box, Button, Paper, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { Box, Button, Paper, Typography } from "@mui/material";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ViewInArIcon from "@mui/icons-material/ViewInAr";
-import InputWithLabel from "../textfiled/InputWithLabel";
+import InputWithLabel from "../../textfiled/InputWithLabel";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 
 import Inventory2Icon from "@mui/icons-material/Inventory2";
@@ -12,14 +12,14 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import SaveIcon from "@mui/icons-material/Save";
-import useToggle from "../../helper/toggleHooke";
-import DiloagShow from "../dawer/DiloagShow";
-import ListSupplier from "./ListSupplier";
+import useToggle from "../../../helper/toggleHooke";
+import DiloagShow from "../../dawer/DiloagShow";
+import ListSupplier from "../ListSupplier";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import EditIcon from "@mui/icons-material/Edit";
-import SelectDropDown from "../dropdown/SelectDropDown";
+import SelectDropDown from "../../dropdown/SelectDropDown";
 
-import supplier from "../../helper/data/suplier.json";
+import supplier from "../../../helper/data/suplier.json";
 const boxContainer = {
   display: "flex",
   flexDirection: "column",

@@ -1,12 +1,6 @@
-import {
-  Box,
-  Grid,
-  TextField,
-  Typography,
-  InputAdornment,
-} from "@mui/material";
-import React from "react";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 import ClearIcon from "@mui/icons-material/Clear";
 function InputWithLabel({
   label,
@@ -16,13 +10,12 @@ function InputWithLabel({
   disableToggle = false,
   value = undefined,
   setValue,
+  reload = () => console.log("test text"),
 }) {
-  // alert(value);
   console.log("value", value);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-
   const handleClear = () => {
     setValue("");
   };
@@ -33,11 +26,13 @@ function InputWithLabel({
           display: "flex",
         }}
       >
-        {/* <Box mx={1}>{iconX}</Box> */}
         <TextField
           type={fieldType}
           value={value}
           onChange={handleChange}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") reload();
+          }}
           size="small"
           disabled={disableToggle}
           placeholder={label}
@@ -75,5 +70,4 @@ function InputWithLabel({
     </>
   );
 }
-
 export default InputWithLabel;
