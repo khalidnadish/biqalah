@@ -1,0 +1,11 @@
+// export { default as InputWithLabel } from "../../textfiled/InputWithLabel";
+export { default as AddBusinessIcon } from "@mui/icons-material/AddBusiness";
+export { default as PersonIcon } from "@mui/icons-material/Person";
+export { default as PhoneEnabledIcon } from "@mui/icons-material/PhoneEnabled";
+export { default as EmailIcon } from "@mui/icons-material/Email";
+export { default as AccountBalanceWalletIcon } from "@mui/icons-material/AccountBalanceWallet";
+export { default as VisibilityIcon } from "@mui/icons-material/Visibility";
+export { default as CleaningServicesIcon } from "@mui/icons-material/CleaningServices";
+export { default as SaveIcon } from "@mui/icons-material/Save";
+export { default as EditIcon } from "@mui/icons-material/Edit";
+export { default as Checkbox } from "@mui/material/Checkbox";

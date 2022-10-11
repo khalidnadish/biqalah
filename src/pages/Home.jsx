@@ -100,8 +100,12 @@ function Home() {
         </Box>
         <div className="totalContainer">
           <Lamsum SupRecord={SupRecord} />
-          <div>{isFetching && !isFetchingNextPage ? <Loader /> : null}</div>
-          {isFetching && <Loader />}
+          <div>
+            {isFetching && !isFetchingNextPage ? (
+              <Loader title=" .. تحميل " />
+            ) : null}
+          </div>
+          {/* {isFetching && <Loader title="تحميل بيانات" />} */}
         </div>
       </div>
     </>

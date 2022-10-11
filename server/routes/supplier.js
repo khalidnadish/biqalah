@@ -19,5 +19,6 @@ router.get("/delete/:id", supplierController.deleteSupplier);
 
 router.get("/showASupplierONsearch", supplierController.showASupplierONsearch);
 router.get("/showall", supplierController.showAllSupplier);
+router.get("/getoneSupplier", supplierController.getoneSupplier);
 
 module.exports = router;

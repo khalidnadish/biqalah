@@ -4,7 +4,7 @@
   left: 50%;
   margin-top: -100px;
   margin: -50px;
-  width: 100px;
+  width: fit-content;
   height: 200px;
   z-index: 100;
 }

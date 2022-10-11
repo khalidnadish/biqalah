@@ -96,7 +96,7 @@ const MainApp = ({ darkTheme, modex, setModex, queryClient }) => {
             <Header />
             <Body />
             <Footer />
-            <ReactQueryDevtools initialIsOpen={false} />
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
           </QueryClientProvider>
         </div>
       </ThemeProvider>

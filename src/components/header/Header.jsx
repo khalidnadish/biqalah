@@ -1,9 +1,10 @@
 import React, { useState, lazy, Suspense } from "react";
 import { useTheme } from "@mui/material/styles";
 import PersonIcon from "@mui/icons-material/Person";
+import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import useToggle from "../../helper/toggleHooke";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -48,7 +49,7 @@ function Header() {
               setTitle("الموردين");
             }}
           >
-            <ShoppingCartOutlinedIcon className="iconStyle" />
+            <MenuIcon className="iconStyle" />
           </Button>
           <Button
             sx={{ minWidth: 0, m: 0, p: 0 }}

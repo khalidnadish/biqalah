@@ -74,6 +74,17 @@ function deleteSupplier(req, res, next) {
   res.send(`delete supplier from controller system  ${req.params.id}`);
 }
 
+function getoneSupplier(req, res) {
+  const supplierd = req.query.supplierid;
+
+  const sqlstatment = `SELECT *  FROM supplier where id = ${supplierd}`;
+  console.log(sqlstatment);
+  dataBase.myDB.execute(sqlstatment, (err, data) => {
+    err && console.log(err);
+    res.status(200).send(data);
+  });
+}
+
 module.exports = {
   addSupplier,
   editSupplier,
@@ -81,4 +92,5 @@ module.exports = {
   showAllSupplier,
   supplierRecordCount,
   showASupplierONsearch,
+  getoneSupplier,
 };

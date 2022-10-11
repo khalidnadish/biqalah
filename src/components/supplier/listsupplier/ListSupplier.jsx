@@ -7,6 +7,7 @@ import InputWithLabel from "../../textfiled/InputWithLabel";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { getFillterData } from "./listSupplierHook";
+// import { useGetsupplier } from "./useGetsupplier";
 
 const DisplaySupplier = lazy(() =>
   import("../supplierCardWithAction/DisplaySupplier")
@@ -14,6 +15,8 @@ const DisplaySupplier = lazy(() =>
 
 function ListSupplier() {
   const [mysearch, setMysearch] = useState("");
+  const [sullierid, setSupplierid] = useState("");
+
   const {
     isLoading,
     isError,
@@ -26,7 +29,7 @@ function ListSupplier() {
     refetch,
   } = getFillterData(mysearch);
 
-  if (isLoading) return <Loader Bcolor="error.dark" />;
+  if (isLoading) return <Loader Bcolor="error" />;
   if (isError) return <p>Error:{error}</p>;
 
   const handleOnChangeOserve = (inView) => {
@@ -73,9 +76,11 @@ function ListSupplier() {
                       <React.Fragment key={supplier.id}>
                         <DisplaySupplier
                           supplier={supplier.sup_name}
+                          supplierId={supplier.id}
                           balance={parseFloat(
                             supplier.dbt - supplier.crd
                           ).toFixed(2)}
+                          setSupplierid={setSupplierid}
                         />
                       </React.Fragment>
                     );
@@ -90,7 +95,7 @@ function ListSupplier() {
           >
             {isFetchingNextPage ? (
               <div className="loading">
-                <Loader />
+                <Loader title="تحميل بيانات" />
               </div>
             ) : null}
           </InView>

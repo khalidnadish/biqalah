@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -10,15 +11,21 @@ function InputWithLabel({
   disableToggle = false,
   value = undefined,
   setValue,
+
+  initialValue = "",
   reload = () => console.log("test text"),
 }) {
-  console.log("value", value);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   const handleClear = () => {
     setValue("");
   };
+
+  useEffect(() => {
+    setValue((pre) => initialValue);
+  }, [initialValue]);
+
   return (
     <>
       <Box
@@ -41,6 +48,7 @@ function InputWithLabel({
               fontSize: "1rem",
               fontFamily: "Noto Kufi Arabic, sans-serif",
               width: widthx,
+              p: 1,
             },
             startAdornment: (
               <InputAdornment position="start">{iconX}</InputAdornment>

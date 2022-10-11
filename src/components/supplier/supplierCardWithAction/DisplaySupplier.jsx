@@ -1,22 +1,30 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { VisibilityIcon, DeleteIcon, ModeEditOutlineIcon } from "./icons";
+import { VisibilityIcon, DeleteIcon, EditIcon } from "./icons";
 import Loader from "../../loader/Loader";
 import useToggle from "../../../helper/toggleHooke";
 import DiloagShow from "../../dawer/DiloagShow";
 import supplierData from "../../../helper/data/suppliedrData.json";
+import axios from "axios";
 import "../sup.css";
+import { responsiveFontSizes } from "@mui/material";
 
 const DispOneSupplier = lazy(() =>
   import("../displayOneSupplier/DispOneSupplier")
 );
 const AddSupplier = lazy(() => import("../addSupplier/AddSupplier"));
 
-function DisplaySupplier({ supplier, balance }) {
+function DisplaySupplier({ supplier, balance, setSupplierid, supplierId }) {
+  let bcolor = "";
+
+  if (balance > 0) {
+    bcolor = "primary";
+  }
+
   return (
     <Paper
       elevation={3}
@@ -39,9 +47,9 @@ function DisplaySupplier({ supplier, balance }) {
           p: 2,
         }}
       >
-        <SupData supplier={supplier} balance={balance} />
         <Suspense fallback={<Loader />}>
-          <ActionSup />
+          <SupData supplier={supplier} balance={balance} />
+          <ActionSup setSupplierid={setSupplierid} supplierId={supplierId} />
         </Suspense>
       </Box>
     </Paper>
@@ -52,7 +60,7 @@ export default DisplaySupplier;
 const SupData = ({ supplier, balance }) => (
   <>
     <Grid container alignItems={"center"}>
-      <Grid item xs={8} align="right">
+      <Grid item xs={6} align="right">
         <Typography
           sx={{
             fontSize: { xs: ".7em", md: ".9em" },
@@ -61,29 +69,47 @@ const SupData = ({ supplier, balance }) => (
           {supplier}
         </Typography>
       </Grid>
-      <Grid item xs={4} align="center">
-        <Box>
-          <Typography
-            sx={{
-              borderBottom: "1px solid #ccc",
-              width: "100%",
-              fontWeight: "bold",
-              fontSize: { xs: ".7em", md: ".9em" },
-            }}
-          >
-            {balance}
-          </Typography>
-        </Box>
+      <Grid item xs={6} align="center">
+        <Typography
+          sx={{
+            width: "100%",
+            fontWeight: "bold",
+            fontSize: { xs: ".7em", md: ".9em" },
+            px: 1,
+            borderRadius: 2,
+            bgcolor: parseInt(balance) >= 0 ? "success.light" : "error.main",
+            color: parseInt(balance) >= 0 ? "common.black" : "common.white",
+            textAlign: "center",
+          }}
+        >
+          {balance}
+        </Typography>
       </Grid>
       <Grid item xs={1} align="left"></Grid>
     </Grid>
   </>
 );
 
-const ActionSup = () => {
+const ActionSup = ({ setSupplierid, supplierId }) => {
   const [show, setShow] = useToggle(false);
   const [update, setUpdate] = useToggle(false);
   const [delSupp, setDelSupp] = useToggle(false);
+  const [updateSupplierData, setUpdateSupplierData] = useState("");
+  const handleUpdate = () => {
+    setUpdate(true);
+    console.log("setSupplierid", supplierId);
+    axios.defaults.baseURL = "http://localhost:3000/";
+    // axios.interceptors.response.use((undefind, error) => {
+    //   console.log(error.response);
+    // });
+
+    const response = axios
+      .get("supplier/getoneSupplier", { params: { supplierid: supplierId } })
+      .then((response) => {
+        setUpdateSupplierData((pre) => response.data[0]);
+        console.log(response.data[0]);
+      });
+  };
 
   return (
     <>
@@ -108,9 +134,9 @@ const ActionSup = () => {
           color="warning"
           variant="contained"
           sx={{ minWidth: 0, p: 0.5, m: 0 }}
-          onClick={() => setUpdate(true)}
+          onClick={() => handleUpdate()}
         >
-          <ModeEditOutlineIcon />
+          <EditIcon />
         </Button>
         <Button
           color="error"
@@ -138,7 +164,7 @@ const ActionSup = () => {
           title={"تعديل مورد"}
           titleColor="warning.dark"
         >
-          <AddSupplier actionForm={"U"} />
+          <AddSupplier actionForm={"U"} u_SupplierData={updateSupplierData} />
         </DiloagShow>
       )}
       {delSupp && (
@@ -148,7 +174,7 @@ const ActionSup = () => {
           title={"حذف مورد"}
           titleColor="error.dark"
         >
-          <AddSupplier actionForm={"D"} />
+          <AddSupplier actionForm={"D"} supplierId={supplierId} />
         </DiloagShow>
       )}
     </>
